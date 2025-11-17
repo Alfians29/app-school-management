@@ -11,18 +11,18 @@ import {
 const data = [
   {
     name: 'Total',
-    count: 106,
+    count: 100,
     fill: '#FFFFFF',
   },
   {
     name: 'Girls',
-    count: 53,
-    fill: '#FAE27C',
+    count: 45,
+    fill: '#8EC5FC',
   },
   {
     name: 'Boys',
-    count: 53,
-    fill: '#C3EBFA',
+    count: 55,
+    fill: '#F28A8A',
   },
 ];
 
@@ -67,12 +67,12 @@ const CountChart = () => {
       {/* BOTTOM */}
       <div className='flex justify-center gap-16'>
         <div className='flex flex-col gap-1'>
-          <div className='w-5 h-5 bg-clrSky rounded-full' />
+          <div className='w-5 h-5 bg-clrRed rounded-full' />
           <h1 className='font-bold'>1.234</h1>
           <h2 className='text-xs text-gray-300'>Boys (55%)</h2>
         </div>
         <div className='flex flex-col gap-1'>
-          <div className='w-5 h-5 bg-clrYellow rounded-full' />
+          <div className='w-5 h-5 bg-clrBlue rounded-full' />
           <h1 className='font-bold'>1.234</h1>
           <h2 className='text-xs text-gray-300'>Girls (45%)</h2>
         </div>
