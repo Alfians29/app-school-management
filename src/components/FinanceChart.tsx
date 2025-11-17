@@ -112,13 +112,13 @@ const FinanceChart = () => {
           <Line
             type='monotone'
             dataKey='income'
-            stroke='#C3EBFA'
+            stroke='#F9E79F'
             strokeWidth={3}
           />
           <Line
             type='monotone'
             dataKey='expense'
-            stroke='#CFCEFF'
+            stroke='#F28A8A'
             strokeWidth={3}
           />
         </LineChart>
