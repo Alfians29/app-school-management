@@ -17,8 +17,14 @@ export default function DashboardLayout({
           href='/'
           className='flex items-center justify-center lg:justify-start gap-2'
         >
+          {/* LOGO */}
           <Image src='/logo.png' alt='logo' width={32} height={32} />
-          <span className='hidden lg:block'>Schoolify</span>
+          <div className='hidden lg:block font-bold'>
+            Sch
+            <span style={{ color: '#F01514' }}>o</span>
+            <span style={{ color: '#0F98EA' }}>o</span>
+            lify
+          </div>
         </Link>
         <Menu />
       </div>
