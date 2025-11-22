@@ -1,6 +1,62 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+
+const navbarItem = {
+  title: 'OTHER',
+  items: [
+    {
+      icon: '/profile.png',
+      label: 'Profile',
+      href: '/profile',
+      visible: ['admin', 'teacher', 'student', 'parent'],
+    },
+    {
+      icon: '/setting.png',
+      label: 'Settings',
+      href: '/settings',
+      visible: ['admin', 'teacher', 'student', 'parent'],
+    },
+    {
+      icon: '/logout.png',
+      label: 'Logout',
+      href: '/logout',
+      visible: ['admin', 'teacher', 'student', 'parent'],
+    },
+  ],
+};
 
 const Navbar = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownOpen]);
+
   return (
     <div className='flex items-center justify-between p-4'>
       {/* SEARCH BAR */}
@@ -27,13 +83,31 @@ const Navbar = () => {
           <span className='text-xs leading-3 font-medium'>Bang Admin</span>
           <span className='text-[10px] text-gray-500 text-right'>Admin</span>
         </div>
-        <Image
-          src='/avatar.png'
-          alt=''
-          width={36}
-          height={36}
-          className='rounded-full'
-        />
+        {/* Avatar with Dropdown */}
+        <div className='relative' ref={dropdownRef}>
+          <Image
+            src='/avatar.png'
+            alt=''
+            width={36}
+            height={36}
+            className='rounded-full cursor-pointer'
+            onClick={toggleDropdown}
+          />
+          {isDropdownOpen && (
+            <div className='absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md text-sm'>
+              {navbarItem.items.map((item) => (
+                <Link
+                  href={item.href}
+                  key={item.label}
+                  className='flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100'
+                >
+                  <Image src={item.icon} alt='' width={16} height={16} />
+                  <span>{item.label}</span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

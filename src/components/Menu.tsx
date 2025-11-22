@@ -92,40 +92,17 @@ const menuItems = [
       },
     ],
   },
-  {
-    title: 'OTHER',
-    items: [
-      {
-        icon: '/profile.png',
-        label: 'Profile',
-        href: '/profile',
-        visible: ['admin', 'teacher', 'student', 'parent'],
-      },
-      {
-        icon: '/setting.png',
-        label: 'Settings',
-        href: '/settings',
-        visible: ['admin', 'teacher', 'student', 'parent'],
-      },
-      {
-        icon: '/logout.png',
-        label: 'Logout',
-        href: '/logout',
-        visible: ['admin', 'teacher', 'student', 'parent'],
-      },
-    ],
-  },
 ];
 
 const Menu = () => {
   return (
     <div className='mt-4 text-sm'>
-      {menuItems.map((i) => (
-        <div className='flex flex-col gap-2' key={i.title}>
+      {menuItems.map((menu) => (
+        <div className='flex flex-col gap-2' key={menu.title}>
           <span className='hidden lg:block text-gray-400 font-light my-4'>
-            {i.title}
+            {menu.title}
           </span>
-          {i.items.map((item) => {
+          {menu.items.map((item) => {
             if (item.visible.includes(role)) {
               return (
                 <Link

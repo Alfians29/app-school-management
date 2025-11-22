@@ -2,7 +2,6 @@ import Announcements from '@/components/Announcements';
 import BigCalendar from '@/components/BigCalendar';
 
 const ParentPage = () => {
-  return <div className=''>ParentPage</div>;
   return (
     <div className='flex-1 p-4 flex gap-4 flex-col xl:flex-row'>
       {/* LEFT SIDE */}

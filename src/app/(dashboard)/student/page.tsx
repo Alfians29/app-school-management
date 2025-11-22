@@ -3,7 +3,6 @@ import BigCalendar from '@/components/BigCalendar';
 import EventCalendar from '@/components/EventCalendar';
 
 const StudentPage = () => {
-  return <div className=''>StudentPage</div>;
   return (
     <div className='p-4 flex gap-4 flex-col xl:flex-row'>
       {/* LEFT SIDE */}
