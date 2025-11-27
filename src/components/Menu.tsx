@@ -1,6 +1,9 @@
+'use client';
+
 import { role } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const menuItems = [
   {
@@ -95,6 +98,8 @@ const menuItems = [
 ];
 
 const Menu = () => {
+  const pathname = usePathname(); // Get the current path
+
   return (
     <div className='mt-4 text-sm'>
       {menuItems.map((menu) => (
@@ -104,11 +109,16 @@ const Menu = () => {
           </span>
           {menu.items.map((item) => {
             if (item.visible.includes(role)) {
+              const isActive = pathname === item.href; // Check if the current path matches the item's href
               return (
                 <Link
                   href={item.href}
                   key={item.label}
-                  className='flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-clrBlueLight'
+                  className={`flex items-center justify-center lg:justify-start gap-4 py-2 md:px-2 rounded-md ${
+                    isActive
+                      ? 'bg-clrBlueLight text-clrBlueDark' // Active styles
+                      : 'text-gray-500 hover:bg-clrBlueLight'
+                  }`}
                 >
                   <Image src={item.icon} alt='' width={20} height={20} />
                   <span className='hidden lg:block'>{item.label}</span>
