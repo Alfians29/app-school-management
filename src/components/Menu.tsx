@@ -111,18 +111,22 @@ const Menu = () => {
             if (item.visible.includes(role)) {
               const isActive = pathname === item.href; // Check if the current path matches the item's href
               return (
-                <Link
-                  href={item.href}
-                  key={item.label}
-                  className={`flex items-center justify-center lg:justify-start gap-4 py-2 md:px-2 rounded-md ${
-                    isActive
-                      ? 'bg-clrBlueLight text-clrBlueDark' // Active styles
-                      : 'text-gray-500 hover:bg-clrBlueLight'
-                  }`}
-                >
-                  <Image src={item.icon} alt='' width={20} height={20} />
-                  <span className='hidden lg:block'>{item.label}</span>
-                </Link>
+                <div className='relative group' key={item.label}>
+                  <Link
+                    href={item.href}
+                    className={`flex items-center justify-center lg:justify-start gap-4 py-2 md:px-2 rounded-md ${
+                      isActive
+                        ? 'bg-clrBlueLight text-clrBlueDark' // Active styles
+                        : 'text-gray-500 hover:bg-clrBlueLight'
+                    }`}
+                  >
+                    <Image src={item.icon} alt='' width={20} height={20} />
+                    <span className='hidden lg:block'>{item.label}</span>
+                  </Link>
+                  <span className='absolute left-full top-1/2 -translate-y-1/2 ml-2 px-2 py-1 bg-clrBlueLight text-gray-500 text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 md:block lg:hidden whitespace-nowrap'>
+                    {item.label}
+                  </span>
+                </div>
               );
             }
           })}
