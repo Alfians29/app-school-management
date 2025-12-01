@@ -1,5 +1,6 @@
 import Announcements from '@/components/Announcements';
 import BigCalendar from '@/components/BigCalendar';
+import FormModal from '@/components/FormModal';
 import Performance from '@/components/Performance';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,7 +24,27 @@ const SingleStudentPage = () => {
               />
             </div>
             <div className='w-2/3 flex flex-col justify-between gap-4'>
-              <h1 className='text-xl font-semibold'>Cameron Moran</h1>
+              <div className='flex items-center gap-4'>
+                <h1 className='text-xl font-semibold'>Cameron Moran</h1>
+                <FormModal
+                  table='student'
+                  type='update'
+                  data={{
+                    id: 1,
+                    username: 'nicorobin',
+                    email: 'nicorobin@gmail.com',
+                    password: 'password',
+                    firstName: 'Robin',
+                    lastName: 'Nico',
+                    phone: '+1 234 567 89',
+                    address: '1234 Main St, Anytown, USA',
+                    bloodType: 'A+',
+                    dateOfBirth: '2002-12-01',
+                    sex: 'female',
+                    img: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1200',
+                  }}
+                />
+              </div>
               <p className='text-sm text-gray-500'>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               </p>
@@ -109,7 +130,7 @@ const SingleStudentPage = () => {
         </div>
         {/* BOTTOM */}
         <div className='mt-4 bg-white rounded-md p-4 h-[800px]'>
-          <h1>Student&apos;s Schedule</h1>
+          <h1 className='text-xl font-semibold'>Student&apos;s Schedule</h1>
           <BigCalendar />
         </div>
       </div>
